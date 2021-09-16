@@ -23,3 +23,23 @@ if response.status_code == 200:
   print(response.content)
 else:
   raise ApiError('Get /tasks/ {}'.format(response.status_code))
+
+# print(content.get('SearchResult'))
+# print(content['SearchResult']['SearchResultItems'])
+# print(type(content))
+
+'''
+Compile a search of paygrade, organisation and starting salary of 
+“Data Analyst”, 
+“Data Scientist” and 
+“Data Engineer” jobs on the USA jobs platform. 
+Make sure you understand how to build CodeList queries so you can look up metadata dimensions
+like ‘PayGrade’, ‘JobCategoryCode’, or ‘SecurityClearanceRequired’.
+
+‘PayGrade’                  >> 
+‘JobCategoryCode’           >> https://data.usajobs.gov/api/Search?JobCategoryCode=6501
+‘SecurityClearanceRequired’ >> https://data.usajobs.gov/api/Search?SecurityClearanceRequired=1
+'''
+
+codelist = 'occupationalseries'
+resp = requests.get(f"https://data.usajobs.gov/api/codelist/{codelist}")
