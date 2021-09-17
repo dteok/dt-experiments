@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import json
+import pprint
 
 
 with open('../data/input/api_keys/usajobs_gov.json', 'r') as apifile:
@@ -24,9 +25,27 @@ if response.status_code == 200:
 else:
   raise ApiError('Get /tasks/ {}'.format(response.status_code))
 
-# print(content.get('SearchResult'))
-# print(content['SearchResult']['SearchResultItems'])
-# print(type(content))
+
+content = json.loads(content)
+# pprint.pprint(content['SearchResult']['SearchResultItems'][0]['MatchedObjectDescriptor'])
+# content.get('LanguageCode')
+output_sritems = str(content.get('SearchResult')['SearchResultItems'][0]['MatchedObjectDescriptor'])
+# pprint.pprint(output)
+print(type(output_sritems))
+results = {}
+# pprint.pprint(output_sritems['PositionTitle'])
+# pprint.pprint(output['SearchResultItems'][0]['MatchedObjectDescriptor']['PositionURI'].split('/')[-1])
+# pprint.pprint(output['SearchResultItems'][0]['MatchedObjectDescriptor']['JobGrade'][0]['Code'])
+# salary_range = output['SearchResultItems'][0]['MatchedObjectDescriptor']['PositionRemuneration'][0]
+# salary_range['MinimumRange']
+
+
+# Create output fields and populate extracted values
+results['jobtitle'] = output_sritems['PositionTitle'].lower()
+results['jobid'] = int(output_sritems['PositionURI'].split('/')[-1])
+results['paygrade'] = output_sritems['JobGrade'][0]['Code']
+results['starting_salary']
+print(results)
 
 '''
 Compile a search of paygrade, organisation and starting salary of 
