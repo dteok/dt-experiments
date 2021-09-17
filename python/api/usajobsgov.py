@@ -47,6 +47,10 @@ results['paygrade'] = output_sritems['JobGrade'][0]['Code']
 results['starting_salary']
 print(results)
 
+# print(content.get('SearchResult'))
+# print(content['SearchResult']['SearchResultItems'])
+# print(type(content))
+
 '''
 Compile a search of paygrade, organisation and starting salary of 
 “Data Analyst”, 
