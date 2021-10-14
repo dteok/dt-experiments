@@ -28,13 +28,13 @@ def main():
 
 
 if __name__ == "__main__":
-    root = Tk()
-    root.title("Digital Clock")
-    root.geometry("370x100")
-    root.resizable(0, 0)
+    appwindow = Tk()
+    appwindow.title("Digital Clock")
+    appwindow.geometry("370x100")
+    appwindow.resizable(0, 0)
 
     label = Label(
-        root,
+        appwindow,
         font=("ds-digital", 50, "bold"),
         background="black",
         foreground="lightgreen",
