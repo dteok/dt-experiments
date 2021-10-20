@@ -22,6 +22,8 @@ black==21.9b0
     # via -r requirements.in
 bleach==4.1.0
     # via nbconvert
+blessings==1.7
+    # via curtsies
 boto3==1.18.57
     # via moto
 botocore==1.21.57
@@ -29,6 +31,8 @@ botocore==1.21.57
     #   boto3
     #   moto
     #   s3transfer
+bpython==0.21
+    # via -r requirements.in
 bs4==0.0.1
     # via -r requirements.in
 cachetools==4.2.4
@@ -49,6 +53,12 @@ colorama==0.4.4
     #   icecream
 cryptography==35.0.0
     # via moto
+curtsies==0.3.10
+    # via bpython
+cwcwidth==0.1.5
+    # via
+    #   bpython
+    #   curtsies
 cython==0.29.21
     # via -r requirements.in
 debugpy==1.5.0
@@ -100,6 +110,8 @@ google-resumable-media==2.0.3
     # via google-cloud-bigquery
 googleapis-common-protos==1.53.0
     # via google-api-core
+greenlet==1.1.2
+    # via bpython
 grpcio==1.41.0
     # via
     #   google-api-core
@@ -311,6 +323,7 @@ pyflakes==2.1.1
     # via flake8
 pygments==2.10.0
     # via
+    #   bpython
     #   icecream
     #   ipython
     #   jupyter-console
@@ -347,6 +360,8 @@ pytz==2021.3
     # via
     #   moto
     #   pandas
+pyxdg==0.27
+    # via bpython
 pyyaml==5.4.1
     # via libcst
 pyzmq==22.3.0
@@ -363,6 +378,7 @@ regex==2021.9.30
 requests==2.26.0
     # via
     #   -r requirements.in
+    #   bpython
     #   google-api-core
     #   google-cloud-bigquery
     #   moto
@@ -382,6 +398,7 @@ six==1.16.0
     # via
     #   asttokens
     #   bleach
+    #   blessings
     #   grpcio
     #   nltk
     #   parse-type
