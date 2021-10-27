@@ -1,5 +1,6 @@
 black
 bs4
+bpython
 colorama
 cython==0.29.21
 icecream
@@ -14,7 +15,6 @@ openpyxl
 pandas
 pandas-gbq
 pylint
-pyspark==2.4.3
 pytest==5.4.1
 pytest-bdd
 pytest-xdist==1.32.0
