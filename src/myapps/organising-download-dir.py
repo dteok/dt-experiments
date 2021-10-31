@@ -6,7 +6,7 @@ from shutil import move
 # directory paths
 
 user = os.getenv("USER")
-target_parent = "mock_downloads_dir"
+target_parent = "Downloads"
 root_dir = "/home/{}/{}".format(user, target_parent)
 image_dir = "/home/{}/{}/images".format(user, target_parent)
 documents_dir = "/home/{}/{}/documents".format(user, target_parent)
@@ -50,19 +50,20 @@ def create_directories(
 
 def move_files(root_dir, files):
     for file in files:
+        f = os.path.join(root_dir, file)
         # file moved and overwritten if already exists
         if file.endswith(doc_types):
-            move(os.path.join(root_dir, file), "{}/{}".format(documents_dir, file))
-            print("file {} moved to {}".format(file, documents_dir))
+            move(f, "{}/{}".format(documents_dir, file))
+            print(f"file {file} moved to {documents_dir}")
         elif file.endswith(img_types):
-            move(os.path.join(root_dir, file), "{}/{}".format(image_dir, file))
-            print("file {} moved to {}".format(file, image_dir))
+            move(f, "{}/{}".format(image_dir, file))
+            print(f"file {file} moved to {image_dir}")
         elif file.endswith(software_types):
-            move(os.path.join(root_dir, file), "{}/{}".format(software_dir, file))
-            print("file {} moved to {}".format(file, others_dir))
+            move(f, "{}/{}".format(software_dir, file))
+            print(f"file {file} moved to {others_dir}")
         else:
-            move(os.path.join(root_dir, file), "{}/{}".format(others_dir, file))
-            print("file {} moved to {}".format(file, others_dir))
+            move(f, "{}/{}".format(others_dir, file))
+            print(f"file {file} moved to {others_dir}")
 
 
 if __name__ == "__main__":
