@@ -37,7 +37,7 @@ def get_files(parent_dir) -> List:
     `parent_dir`. Hidden or dot files are ignored
 
     Arguments:
-        parent_dir {string} -- base path
+        parent_dir {string} -- this is the base
 
     Returns:
         List -- Every filenames found in `parent_dir` (e.g. 'foobar.txt')
@@ -52,10 +52,7 @@ def get_files(parent_dir) -> List:
 
 
 def create_directories():
-    """Creates necessary target directories for moving files to
-
-    Arguments: None
-    """
+    """Creates necessary target directories for moving files to"""
 
     for path in parent_paths:
         if not os.path.isdir(path):
@@ -64,11 +61,7 @@ def create_directories():
 
 
 def execution_report(files):
-    """Simple report on number of files moved. If no files, this function does nothing.
-
-    Arguments:
-        files {[type]} -- [description]
-    """
+    """Simple report on number of files moved. If no files, this function does nothing."""
     if files:
         print(f"\nMoved {len(files)} files to their locations. Nice and tidy now!")
 
