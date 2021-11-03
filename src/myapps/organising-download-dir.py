@@ -1,14 +1,15 @@
-# automation.py
 import os
 from os.path import isfile, join
-from pathlib import Path
+
+# from pathlib import Path
 from shutil import move
 from typing import List
 import logging
 
 # directory paths
 
-BASE_PATH = Path(os.path.abspath(__file__)).parent.parent.parent.parent.parent.parent
+# BASE_PATH = Path(os.path.abspath(__file__)).parent.parent.parent.parent.parent.parent
+BASE_PATH = os.getenv("HOME")
 TARGET_PARENT = "Downloads"  # change target location here; e.g. /home/username/{foobar}
 TARGET_PARENT_PATH = f"{BASE_PATH}/{TARGET_PARENT}"
 
@@ -58,13 +59,13 @@ def create_directories(image_path, documents_path, software_path, others_path):
         "software_dir": software_path,
         "others": others_path,
     }
-    # print(dir_dict)
-    for k, v in dir_dict.items():
-        if os.path.isdir(v) == True:
-            continue
+
+    for dir, path in dir_dict.items():
+        if not os.path.isdir(path):
+            print(f"{dir} not present. Creating '{path}'")
+            os.mkdir(path)
         else:
-            print(f"{k} not present. Creating '{v}'")
-            os.mkdir(v)
+            continue
 
 
 def execution_report(files):
@@ -79,9 +80,14 @@ def move_files(parent_dir, files):
         parent_dir {string} -- base path, is actually the source
         files {string} -- file object to move
     """
-    if files:
+    if not files:
+        logging.warning(
+            f" `parent_dir` ({TARGET_PARENT_PATH}) has no files to organise!"
+        )
+    else:
         for file in files:
             fpath = os.path.join(parent_dir, file)
+
             # file moved and overwritten if already exists
             if file.endswith(doc_types):
                 move(fpath, f"{parent_documents_path}/{file}")
@@ -100,12 +106,6 @@ def move_files(parent_dir, files):
                 print(f"file {file} moved to {parent_others_path}")
 
         print(execution_report(files))
-    else:
-        # print("No files to move!")
-        logging.warning(
-            f" `parent_dir` ({TARGET_PARENT_PATH}) has no files to organise!"
-        )
-        pass
 
 
 if __name__ == "__main__":
