@@ -1,0 +1,12 @@
+[project]
+name = "pokefib"
+version = "0.1.0"
+description = "Fibonacci numbers and PokeAPI ability lookups"
+requires-python = ">=3.10"
+dependencies = ["requests"]
+
+[tool.black]
+line-length = 88
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
