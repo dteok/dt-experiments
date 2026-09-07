@@ -1,0 +1,97 @@
+# Seed watchlist.
+#
+# This is NOT the tradeable universe. It is simply the set of symbols we
+# bother to download, so that free-tier request quotas last. The tradeable
+# universe is computed per-date by algomvp.universe.pit, and is always a
+# subset of what is downloaded.
+#
+# Two groups on purpose:
+#
+#  - benchmarks: broad, boring, extremely liquid ETFs. These exist so the
+#    backtest engine can be checked against a known answer. If your engine
+#    cannot reproduce SPY's buy-and-hold return, it cannot be trusted on
+#    anything harder.
+#
+#  - equities: large-cap NYSE and NASDAQ names spread across sectors, so the
+#    universe is not secretly one big bet on technology.
+
+benchmarks:
+  - SPY   # S&P 500
+  - QQQ   # Nasdaq 100
+  - IWM   # Russell 2000, small caps
+  - IEF   # 7-10 year Treasuries, the defensive leg
+
+equities:
+  # Technology
+  - AAPL
+  - MSFT
+  - NVDA
+  - AVGO
+  - CSCO
+  # Communications and consumer
+  - GOOGL
+  - AMZN
+  - HD
+  - MCD
+  - NKE
+  # Healthcare
+  - JNJ
+  - UNH
+  - PFE
+  - ABT
+  # Financials
+  - JPM
+  - BAC
+  - GS
+  - AXP
+  # Industrials and energy
+  - CAT
+  - HON
+  - UNP
+  - XOM
+  - CVX
+  # Staples and utilities
+  - PG
+  - KO
+  - WMT
+  - COST
+  - NEE
+  - DUK
+
+# The flat list the code actually reads. Kept explicit rather than derived,
+# so that adding a symbol above without adding it here is an obvious mistake
+# rather than a silent one.
+seed_tickers:
+  - SPY
+  - QQQ
+  - IWM
+  - IEF
+  - AAPL
+  - MSFT
+  - NVDA
+  - AVGO
+  - CSCO
+  - GOOGL
+  - AMZN
+  - HD
+  - MCD
+  - NKE
+  - JNJ
+  - UNH
+  - PFE
+  - ABT
+  - JPM
+  - BAC
+  - GS
+  - AXP
+  - CAT
+  - HON
+  - UNP
+  - XOM
+  - CVX
+  - PG
+  - KO
+  - WMT
+  - COST
+  - NEE
+  - DUK
